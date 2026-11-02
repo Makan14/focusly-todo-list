@@ -1,0 +1,92 @@
+/* Importée dans index.html : Poppins est la police principale de toute l'interface. */
+
+/* Variables globales : couleurs, espacements et dimensions réutilisables. */
+:root {
+  --color-bg: #f7f7fb;
+  --color-surface: #ffffff;
+  --color-text: #20222f;
+  --color-muted: #888b9b;
+  --color-border: #ececf2;
+  --color-primary: #6c63ff;
+  --color-primary-light: #eeedff;
+  --color-coral: #ff7d70;
+  --color-coral-light: #fff0ee;
+  --color-yellow: #ffbc4d;
+  --color-yellow-light: #fff7e6;
+  --color-green: #45bc85;
+  --color-green-light: #e9f8f0;
+  --color-blue: #5c9dff;
+  --color-blue-light: #edf4ff;
+  --shadow: 0 12px 35px rgba(36, 38, 75, 0.07);
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 9px;
+  --sidebar-width: 272px;
+  --content-max-width: 1120px;
+  --header-height: 72px;
+  --page-padding: clamp(24px, 4vw, 58px);
+  --transition: 180ms ease;
+}
+
+/* Les variables sont simplement redéfinies pour le mode sombre. */
+body.dark-mode {
+  --color-bg: #171821;
+  --color-surface: #22232e;
+  --color-text: #f4f3fb;
+  --color-muted: #aaaab9;
+  --color-border: #343541;
+  --color-primary-light: #302e51;
+  --color-coral-light: #3b292b;
+  --color-yellow-light: #3e3321;
+  --color-green-light: #213a31;
+  --color-blue-light: #252f48;
+  --shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: "Poppins", sans-serif; font-size: 14px; transition: background var(--transition), color var(--transition); }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+
+.app-shell { min-height: 100vh; display: flex; }
+.sidebar { width: var(--sidebar-width); min-height: 100vh; padding: 30px 18px 22px; background: var(--color-surface); border-right: 1px solid var(--color-border); display: flex; flex-direction: column; flex-shrink: 0; transition: background var(--transition), transform var(--transition); }
+.sidebar-top { display: flex; justify-content: space-between; align-items: center; padding: 0 12px 36px; }
+.brand { color: var(--color-text); font-size: 24px; font-weight: 700; letter-spacing: -1.4px; text-decoration: none; }
+.brand span, h1 span { color: var(--color-primary); }
+.close-menu, .mobile-header { display: none; }
+.nav-links { display: grid; gap: 7px; }
+.nav-link { width: 100%; padding: 11px 12px; display: flex; gap: 11px; align-items: center; border: 0; border-radius: var(--radius-sm); color: var(--color-muted); background: transparent; text-align: left; transition: var(--transition); }
+.nav-link span { font-size: 18px; width: 18px; text-align: center; }
+.nav-link b { margin-left: auto; color: inherit; font-size: 11px; font-weight: 600; }
+.nav-link:hover, .nav-link.active { color: var(--color-primary); background: var(--color-primary-light); }
+.list-heading { display: flex; align-items: center; justify-content: space-between; margin: 36px 12px 12px; }
+.list-heading p, .eyebrow { margin: 0; color: var(--color-muted); font-size: 10px; font-weight: 600; letter-spacing: .9px; }
+.small-icon, .icon-button { border: 0; background: transparent; color: var(--color-muted); font-size: 22px; line-height: 1; }
+.projects { display: grid; gap: 5px; }
+.project-link { width: 100%; display: flex; align-items: center; gap: 10px; padding: 9px 12px; color: var(--color-muted); border: 0; border-radius: var(--radius-sm); background: transparent; text-align: left; }
+.project-link:hover { background: var(--color-bg); color: var(--color-text); }
+.project-dot { width: 9px; height: 9px; border-radius: 50%; }
+.project-link b { margin-left: auto; font-size: 11px; font-weight: 600; }
+.sidebar-footer { margin-top: auto; }
+.theme-switch { width: 100%; display: flex; gap: 10px; padding: 12px; color: var(--color-muted); border: 0; border-radius: var(--radius-sm); background: transparent; text-align: left; }
+.theme-switch:hover { background: var(--color-bg); }
+.profile { display: flex; align-items: center; gap: 9px; margin: 22px 5px 0; padding: 17px 0 0; border-top: 1px solid var(--color-border); }
+.avatar { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, var(--color-primary), #a7a0ff); color: white; font-size: 10px; font-weight: 700; }
+.profile strong, .profile small { display: block; }.profile strong { font-size: 12px; }.profile small { color: var(--color-muted); font-size: 10px; }.profile button { margin-left: auto; border: 0; background: none; color: var(--color-muted); font-size: 18px; }
+
+.main-content { width: min(100%, calc(var(--content-max-width) + var(--page-padding) * 2)); padding: 58px var(--page-padding); margin: 0 auto; }
+.welcome, .section-heading, .card-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+h1 { margin: 6px 0 7px; font-size: clamp(28px, 4vw, 34px); letter-spacing: -1.5px; line-height: 1.2; }.subtitle, .progress-caption, .section-heading p { color: var(--color-muted); margin: 0; }
+.add-task-button { padding: 12px 18px; border: 0; border-radius: var(--radius-sm); background: var(--color-primary); color: #fff; font-size: 12px; font-weight: 600; box-shadow: 0 7px 16px rgba(108, 99, 255, .2); transition: transform var(--transition), background var(--transition); }.add-task-button:hover { background: #5850df; transform: translateY(-1px); }.add-task-button span { font-size: 18px; vertical-align: -1px; margin-right: 5px; }
+.overview { display: grid; grid-template-columns: 1.8fr 1fr 1fr; gap: 17px; margin: 40px 0 50px; }.progress-card, .stat-card { min-height: 137px; padding: 22px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); box-shadow: var(--shadow); }.card-title > div { display: flex; align-items: center; gap: 10px; }.card-title p, .stat-card p { margin: 0; color: var(--color-muted); font-size: 11px; }.card-title strong { color: var(--color-primary); font-size: 16px; }.card-icon { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: var(--radius-sm); font-size: 15px; }.purple { color: var(--color-primary); background: var(--color-primary-light); }.coral { color: var(--color-coral); background: var(--color-coral-light); }.yellow { color: #d99000; background: var(--color-yellow-light); }.progress-track { height: 8px; margin: 19px 0 9px; overflow: hidden; border-radius: 20px; background: var(--color-primary-light); }.progress-track span { display: block; height: 100%; border-radius: inherit; background: var(--color-primary); transition: width .4s ease; }.stat-card { display: flex; align-items: center; gap: 13px; }.stat-card strong { display: block; font-size: 26px; letter-spacing: -1px; }
+.section-heading { align-items: center; margin-bottom: 17px; }h2 { margin: 0; font-size: 20px; letter-spacing: -.7px; }.section-heading p { font-size: 12px; margin-top: 3px; }.toolbar { display: flex; padding: 4px; gap: 2px; border-radius: var(--radius-sm); background: var(--color-surface); border: 1px solid var(--color-border); }.toolbar-button { padding: 6px 9px; color: var(--color-muted); border: 0; border-radius: 6px; background: transparent; font-size: 10px; }.toolbar-button.active { background: var(--color-primary-light); color: var(--color-primary); font-weight: 600; }
+.task-list { display: grid; gap: 9px; }.task { display: flex; align-items: center; gap: 13px; padding: 16px 17px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); box-shadow: 0 5px 15px rgba(35, 35, 55, .025); transition: transform var(--transition), border-color var(--transition); }.task:hover { transform: translateY(-1px); border-color: #d9d7f9; }.task-checkbox { appearance: none; display: grid; place-content: center; width: 19px; height: 19px; margin: 0; border: 1.8px solid var(--color-muted); border-radius: 6px; background: transparent; cursor: pointer; }.task-checkbox::before { content: "✓"; color: white; font-size: 12px; font-weight: 700; transform: scale(0); transition: transform var(--transition); }.task-checkbox:checked { border-color: var(--color-green); background: var(--color-green); }.task-checkbox:checked::before { transform: scale(1); }.task-body { flex: 1; min-width: 0; }.task-title { display: block; font-size: 13px; font-weight: 500; }.task.completed .task-title { color: var(--color-muted); text-decoration: line-through; }.task-meta { display: flex; align-items: center; gap: 8px; margin-top: 4px; color: var(--color-muted); font-size: 10px; }.tag { padding: 3px 7px; border-radius: 20px; font-size: 9px; font-weight: 600; }.tag-work { color: var(--color-primary); background: var(--color-primary-light); }.tag-personal { color: var(--color-coral); background: var(--color-coral-light); }.tag-shopping { color: #b77a00; background: var(--color-yellow-light); }.tag-health { color: #158755; background: var(--color-green-light); }.task-actions { display: flex; gap: 2px; opacity: 0; transition: opacity var(--transition); }.task:hover .task-actions { opacity: 1; }.task-actions button { width: 28px; height: 28px; border: 0; border-radius: 7px; color: var(--color-muted); background: transparent; }.task-actions button:hover { color: var(--color-primary); background: var(--color-primary-light); }.quick-add { width: 100%; margin-top: 11px; padding: 14px; border: 1px dashed #c9c7d9; border-radius: var(--radius-md); background: transparent; color: var(--color-muted); font-size: 12px; text-align: left; }.quick-add:hover { border-color: var(--color-primary); color: var(--color-primary); }.quick-add span { margin-right: 9px; font-size: 18px; }
+.task-modal { width: min(92vw, 470px); padding: 0; border: 0; border-radius: var(--radius-lg); background: var(--color-surface); color: var(--color-text); box-shadow: 0 24px 70px rgba(17, 18, 37, .25); }.task-modal::backdrop { background: rgba(20, 20, 37, .46); backdrop-filter: blur(3px); }.task-modal form { padding: 27px; }.modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 22px; }.modal-header h2 { margin-top: 5px; }.task-modal label { display: block; margin: 14px 0 6px; color: var(--color-muted); font-size: 11px; font-weight: 600; }.task-modal input, .task-modal select { width: 100%; padding: 11px 12px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); outline: none; background: var(--color-bg); color: var(--color-text); }.task-modal input:focus, .task-modal select:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-primary-light); }.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }.form-actions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 27px; }.secondary-button { padding: 11px 17px; border: 0; border-radius: var(--radius-sm); background: var(--color-primary-light); color: var(--color-primary); font-size: 12px; font-weight: 600; }
+
+/* Adaptation tablette : les cartes gardent leur lisibilité sur moins de largeur. */
+@media (max-width: 880px) { .sidebar { position: fixed; z-index: 5; transform: translateX(-105%); box-shadow: var(--shadow); }.sidebar.open { transform: translateX(0); }.sidebar-overlay { position: fixed; z-index: 4; inset: 0; display: none; border: 0; background: rgba(21, 21, 37, .35); }.sidebar-overlay.visible { display: block; }.close-menu { display: block; }.mobile-header { height: var(--header-height); padding: 0 21px; display: flex; align-items: center; justify-content: space-between; background: var(--color-surface); border-bottom: 1px solid var(--color-border); }.mobile-header .brand { font-size: 21px; }.main-content { padding-top: 42px; }.overview { grid-template-columns: 1fr 1fr; }.progress-card { grid-column: span 2; } }
+
+/* Adaptation téléphone : une colonne et des boutons suffisamment accessibles. */
+@media (max-width: 560px) { .main-content { padding: 29px 18px 45px; }.welcome { align-items: stretch; flex-direction: column; }.welcome .add-task-button { width: 100%; }.overview { grid-template-columns: 1fr 1fr; gap: 10px; margin: 27px 0 34px; }.progress-card { grid-column: span 2; }.progress-card, .stat-card { min-height: 112px; padding: 16px; }.stat-card { align-items: flex-start; flex-direction: column; gap: 6px; }.section-heading { align-items: flex-start; flex-direction: column; }.toolbar { width: 100%; }.toolbar-button { flex: 1; }.task { gap: 10px; padding: 13px; }.task-meta { gap: 5px; }.task-actions { opacity: 1; }.form-grid { grid-template-columns: 1fr; gap: 0; }.task-modal form { padding: 21px; } }
+
