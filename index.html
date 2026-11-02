@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Focusly, une todo list moderne pour organiser ses priorités."
+    />
+    <!-- La police Poppins est chargée depuis Google Fonts pour un rendu doux et lisible. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Focusly — Mes tâches</title>
+  </head>
+  <body>
+    <!-- En-tête mobile : le bouton ouvre la navigation latérale sur petit écran. -->
+    <header class="mobile-header">
+      <button class="icon-button" id="menuButton" aria-label="Ouvrir le menu">☰</button>
+      <a class="brand" href="#top">focusly<span>.</span></a>
+      <button class="icon-button" id="mobileThemeButton" aria-label="Changer de thème">☼</button>
+    </header>
+
+    <div class="app-shell" id="top">
+      <!-- Navigation et aperçu des listes. -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+          <a class="brand" href="#top">focusly<span>.</span></a>
+          <button class="close-menu icon-button" id="closeMenuButton" aria-label="Fermer le menu">×</button>
+        </div>
+
+        <nav class="nav-links" aria-label="Navigation principale">
+          <button class="nav-link active" data-filter="today"><span>⌂</span> Aujourd'hui <b id="todayCount">0</b></button>
+          <button class="nav-link" data-filter="upcoming"><span>◷</span> À venir <b id="upcomingCount">0</b></button>
+          <button class="nav-link" data-filter="completed"><span>✓</span> Terminées <b id="completedCount">0</b></button>
+        </nav>
+
+        <div class="list-heading">
+          <p>MES LISTES</p>
+          <button class="small-icon" id="addListButton" aria-label="Ajouter une liste">+</button>
+        </div>
+        <!-- Les listes sont générées par JavaScript pour rester faciles à faire évoluer. -->
+        <div class="projects" id="projects"></div>
+
+        <div class="sidebar-footer">
+          <button class="theme-switch" id="themeButton"><span>☾</span> Thème sombre</button>
+          <div class="profile"><div class="avatar">MA</div><div><strong>Makan</strong><small>Mon espace</small></div><button aria-label="Options du profil">⋮</button></div>
+        </div>
+      </aside>
+
+      <!-- Le voile empêche les clics derrière le menu mobile ouvert. -->
+      <button class="sidebar-overlay" id="sidebarOverlay" aria-label="Fermer le menu"></button>
+
+      <main class="main-content">
+        <section class="welcome">
+          <div><p class="eyebrow" id="dateLabel">LUNDI, 2 NOVEMBRE</p><h1>Bonjour, Makan <span>✦</span></h1><p class="subtitle">Une petite action aujourd'hui peut tout changer.</p></div>
+          <button class="add-task-button" id="openTaskModal"><span>+</span> Nouvelle tâche</button>
+        </section>
+
+        <section class="overview" aria-label="Vue d'ensemble">
+          <article class="progress-card">
+            <div class="card-title"><div><span class="card-icon purple">◌</span><p>Progression du jour</p></div><strong id="progressText">0%</strong></div>
+            <div class="progress-track"><span id="progressBar"></span></div>
+            <p class="progress-caption" id="progressCaption">Prêt à commencer ?</p>
+          </article>
+          <article class="stat-card"><span class="card-icon coral">✓</span><div><strong id="doneStat">0</strong><p>tâche terminée</p></div></article>
+          <article class="stat-card"><span class="card-icon yellow">◷</span><div><strong id="pendingStat">0</strong><p>tâches en cours</p></div></article>
+        </section>
+
+        <section class="task-section">
+          <div class="section-heading"><div><h2 id="pageTitle">Aujourd'hui</h2><p id="taskSummary">Vos priorités du jour</p></div><div class="toolbar"><button class="toolbar-button active" id="allFilter">Toutes</button><button class="toolbar-button" id="activeFilter">À faire</button><button class="toolbar-button" id="doneFilter">Terminées</button></div></div>
+          <div class="task-list" id="taskList"></div>
+          <button class="quick-add" id="quickAddButton"><span>+</span> Ajouter une tâche</button>
+        </section>
+      </main>
+    </div>
+
+    <!-- Fenêtre modale utilisée pour la création comme pour l'édition d'une tâche. -->
+    <dialog class="task-modal" id="taskModal">
+      <form id="taskForm" method="dialog">
+        <div class="modal-header"><div><p class="eyebrow">ORGANISATION</p><h2 id="modalTitle">Nouvelle tâche</h2></div><button class="icon-button" id="closeModal" type="button" aria-label="Fermer">×</button></div>
+        <label for="taskName">Nom de la tâche</label><input id="taskName" name="taskName" required maxlength="80" placeholder="Ex. Préparer la présentation" />
+        <div class="form-grid"><div><label for="taskCategory">Liste</label><select id="taskCategory" name="taskCategory"></select></div><div><label for="taskTime">Heure</label><input id="taskTime" name="taskTime" type="time" value="09:00" /></div></div>
+        <div class="form-actions"><button class="secondary-button" id="cancelModal" type="button">Annuler</button><button class="add-task-button" type="submit">Enregistrer</button></div>
+      </form>
+    </dialog>
+
+    <!-- Le script est placé en fin de page afin que le DOM soit disponible au chargement. -->
+    <script src="main.js"></script>
+  </body>
+</html>
+
